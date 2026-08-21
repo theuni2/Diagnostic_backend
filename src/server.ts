@@ -12,6 +12,7 @@ const app: Express = express();
 // Security and utility middleware
 app.use(helmetMiddleware);
 app.use(corsMiddleware);
+app.options('*', corsMiddleware);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

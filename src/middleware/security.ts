@@ -31,8 +31,10 @@ export const corsMiddleware = cors({
   allowedHeaders: ['Content-Type', 'Authorization'],
 });
 
-// Helmet HTTP headers security
-export const helmetMiddleware = helmet();
+// Helmet HTTP headers security (configured for cross-origin sharing)
+export const helmetMiddleware = helmet({
+  crossOriginResourcePolicy: { policy: 'cross-origin' },
+});
 
 // General API rate limiter (generous limits for diagnostic auto-saving & development)
 export const apiRateLimiter = rateLimit({
