@@ -17,6 +17,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api', apiRateLimiter);
 
+// Root URL welcome endpoint
+app.get('/', (_req, res) => {
+  res.json({
+    status: 'online',
+    message: '🚀 UD Diagnostic AI Backend API is running!',
+    healthCheck: '/api/health',
+  });
+});
+
 // API routes
 app.use('/api', apiRoutes);
 

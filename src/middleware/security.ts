@@ -13,11 +13,14 @@ export const corsMiddleware = cors({
 
     const allowedOrigins = [
       config.frontendUrl,
+      'https://diagnostic-frontend-roan.vercel.app',
       'http://localhost:3000',
       'http://127.0.0.1:3000',
     ];
 
-    if (allowedOrigins.includes(origin) || !config.isProduction) {
+    const isVercelDomain = origin.endsWith('.vercel.app');
+
+    if (allowedOrigins.includes(origin) || isVercelDomain || !config.isProduction) {
       callback(null, true);
     } else {
       callback(new Error(`CORS blocked for origin: ${origin}`));
