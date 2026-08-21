@@ -20,6 +20,7 @@ export const register = async (
       {
         user: authData.user,
         profile: authData.profile,
+        token: authData.token,
       },
       201
     );
@@ -42,6 +43,7 @@ export const login = async (
     sendSuccess(res, 'Logged in successfully', {
       user: authData.user,
       profile: authData.profile,
+      token: authData.token,
     });
   } catch (error) {
     next(error);
